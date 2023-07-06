@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Tệp xác minh quyền sở hữu miền cho các Microsoft 365 – nằm ở gốc của trang web",
+  "Domain": "khangbinhdl.github.io",
+  "Id": "abe71a44-49dc-42b8-b873-827b5d4ecc5d"
+}
