@@ -1,0 +1,46 @@
+body {
+	font-family: Arial, sans-serif;
+	background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}
+
+.container {
+	text-align: center;
+	background: rgba(255, 255, 255, 0.8);
+	padding: 50px;
+	border-radius: 15px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+	font-size: 2.5em;
+	color: #333;
+	margin-bottom: 20px;
+}
+
+.info {
+	font-size: 1.2em;
+	color: #333;
+	margin-bottom: 20px;
+}
+
+.links a {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 1.2em;
+	color: #fff;
+	background: #5f9ea0;
+	padding: 15px 30px;
+	border-radius: 50px;
+	transition: background 0.3s;
+	margin-top: 10px;
+}
+
+.links a:hover {
+	background: #4682b4;
+}
+// tạo bởi ChatGPT nên như cc
