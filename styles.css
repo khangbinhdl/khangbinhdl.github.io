@@ -1,20 +1,31 @@
+:root {
+	--bg-light: linear-gradient(135deg, #89f7fe, #66a6ff);
+	--bg-dark: linear-gradient(135deg, #1e1e2f, #11111f);
+	--text-light: #ffffff;
+	--text-dark: #1e1e1e;
+}
+
 html {
 	scroll-behavior: smooth;
 }
 
 body {
 	font-family: 'Inter', sans-serif;
-	background: linear-gradient(135deg, #89f7fe, #66a6ff);
+	background: var(--bg-light);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
 	margin: 0;
+	transition: background 0.5s ease;
 	overflow-x: hidden;
 }
 
-/* Glassmorphism */
-.glass {
+body.dark {
+	background: var(--bg-dark);
+}
+
+.container.glass {
 	background: rgba(255, 255, 255, 0.15);
 	backdrop-filter: blur(20px);
 	-webkit-backdrop-filter: blur(20px);
@@ -26,11 +37,17 @@ body {
 	width: 90%;
 	text-align: center;
 	animation: fadeIn 1.2s ease-out;
+	color: var(--text-dark);
+}
+
+body.dark .glass {
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	color: var(--text-light);
 }
 
 h1 {
 	font-size: 2.8em;
-	color: #ffffff;
 	margin-bottom: 25px;
 	display: flex;
 	justify-content: center;
@@ -40,17 +57,14 @@ h1 {
 
 .info {
 	font-size: 1.1em;
-	color: #f0f0f0;
 	margin-bottom: 30px;
 }
 
 .info i {
 	margin-right: 8px;
 	vertical-align: middle;
-	color: #ffffffbb;
 }
 
-/* Links */
 .links {
 	display: flex;
 	flex-direction: column;
@@ -80,7 +94,16 @@ h1 {
 	box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* Fade-in animation */
+body.dark .links a {
+	background: rgba(255, 255, 255, 0.08);
+	border-color: rgba(255, 255, 255, 0.1);
+	color: #f0f0f0;
+}
+
+body.dark .links a:hover {
+	background: rgba(255, 255, 255, 0.15);
+}
+
 @keyframes fadeIn {
 	from {
 		opacity: 0;
@@ -92,12 +115,36 @@ h1 {
 	}
 }
 
-@media (max-width: 480px) {
-	h1 {
-		font-size: 2em;
-	}
-	.links a {
-		font-size: 1em;
-		padding: 12px 20px;
-	}
+.theme-toggle {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+.toggle-label {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	transition: color 0.3s ease;
+}
+
+#toggle-dark {
+	display: none;
+}
+
+.toggle-label i {
+	transition: transform 0.3s ease;
+}
+
+body.dark .toggle-label i[data-lucide="sun"] {
+	display: inline;
+}
+
+body.dark .toggle-label i[data-lucide="moon"] {
+	display: none;
+}
+
+body:not(.dark) .toggle-label i[data-lucide="sun"] {
+	display: none;
 }
