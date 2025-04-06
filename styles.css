@@ -1,46 +1,89 @@
+/* Cuộn mượt */
+html {
+	scroll-behavior: smooth;
+}
+
 body {
-	font-family: Arial, sans-serif;
-	background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+	font-family: 'Inter', sans-serif;
+	background: linear-gradient(135deg, #89f7fe, #66a6ff);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	min-height: 100vh;
 	margin: 0;
+	overflow-x: hidden;
 }
 
+/* Container chính */
 .container {
 	text-align: center;
-	background: rgba(255, 255, 255, 0.8);
-	padding: 50px;
-	border-radius: 15px;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	background: rgba(255, 255, 255, 0.9);
+	padding: 50px 30px;
+	border-radius: 25px;
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+	max-width: 600px;
+	width: 90%;
+	animation: fadeIn 1s ease-out;
 }
 
+/* Tiêu đề */
 h1 {
-	font-size: 2.5em;
-	color: #333;
+	font-size: 3em;
+	color: #2c3e50;
 	margin-bottom: 20px;
 }
 
+/* Thông tin */
 .info {
-	font-size: 1.2em;
-	color: #333;
-	margin-bottom: 20px;
+	font-size: 1.1em;
+	color: #34495e;
+	margin-bottom: 30px;
+}
+
+/* Các link */
+.links {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
 }
 
 .links a {
-	display: inline-block;
 	text-decoration: none;
-	font-size: 1.2em;
-	color: #fff;
-	background: #5f9ea0;
-	padding: 15px 30px;
-	border-radius: 50px;
-	transition: background 0.3s;
-	margin-top: 10px;
+	font-size: 1.1em;
+	color: white;
+	background: linear-gradient(135deg, #5f9ea0, #4682b4);
+	padding: 15px 25px;
+	border-radius: 30px;
+	transition: all 0.3s ease;
+	box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .links a:hover {
-	background: #4682b4;
+	background: linear-gradient(135deg, #4682b4, #5f9ea0);
+	transform: translateY(-3px);
+	box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
-// tạo bởi ChatGPT nên như cc
+
+/* Fade-in animation */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Responsive tweak */
+@media (max-width: 480px) {
+	h1 {
+		font-size: 2em;
+	}
+
+	.links a {
+		font-size: 1em;
+		padding: 12px 20px;
+	}
+}
