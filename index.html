@@ -11,6 +11,13 @@
 <body>
 	<div class="container glass">
 		<h1><i data-lucide="sparkles"></i> Khang Bình</h1>
+		<div class="theme-toggle">
+			<input type="checkbox" id="toggle-dark">
+			<label for="toggle-dark" class="toggle-label">
+				<i data-lucide="moon"></i>
+				<i data-lucide="sun"></i>
+			</label>
+		</div>
 		<div class="info">
 			<p><strong><i data-lucide="user-round"></i> Tạo bởi:</strong> Phạm Khang Bình</p>
 			<p><i data-lucide="zap"></i> Nào hứng thì chạy file update</p>
@@ -32,6 +39,19 @@
 	</div>
 	<script>
 		lucide.createIcons();
+
+		const toggle = document.getElementById('toggle-dark');
+		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+		if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDark)) {
+			document.body.classList.add('dark');
+			toggle.checked = true;
+		}
+
+		toggle.addEventListener('change', () => {
+			document.body.classList.toggle('dark');
+			localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+		});
 	</script>
 </body>
 </html>
