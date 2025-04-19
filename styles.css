@@ -1,5 +1,4 @@
 :root {
-	--bg-light: linear-gradient(135deg, #89f7fe, #66a6ff);
 	--bg-dark: linear-gradient(135deg, #1e1e2f, #11111f);
 	--text-light: #ffffff;
 	--text-dark: #1e1e1e;
@@ -11,7 +10,9 @@ html {
 
 body {
 	font-family: 'Inter', sans-serif;
-	background: var(--bg-light);
+	background: linear-gradient(270deg, #89f7fe, #66a6ff, #fbc2eb, #a6c1ee);
+	background-size: 800% 800%;
+	animation: gradientFlow 15s ease infinite;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -19,6 +20,23 @@ body {
 	margin: 0;
 	transition: background 0.5s ease;
 	overflow-x: hidden;
+	position: relative;
+}
+
+#particles-js {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	pointer-events: none;
+}
+
+@keyframes gradientFlow {
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
 }
 
 body.dark {
@@ -26,11 +44,13 @@ body.dark {
 }
 
 .container.glass {
+	position: relative;
+	z-index: 1;
 	background: rgba(255, 255, 255, 0.15);
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(25px);
+	-webkit-backdrop-filter: blur(25px);
 	border: 1px solid rgba(255, 255, 255, 0.3);
-	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 	border-radius: 25px;
 	padding: 50px 30px;
 	max-width: 600px;
@@ -147,4 +167,20 @@ body.dark .toggle-label i[data-lucide="moon"] {
 
 body:not(.dark) .toggle-label i[data-lucide="sun"] {
 	display: none;
+}
+
+.wave-container {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 0;
+	overflow: hidden;
+	line-height: 0;
+}
+
+.wave-container svg {
+	display: block;
+	width: 100%;
+	height: 150px;
 }

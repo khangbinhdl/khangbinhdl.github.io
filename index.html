@@ -7,10 +7,13 @@
 	<link rel="stylesheet" href="styles.css">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 	<script src="https://unpkg.com/lucide@latest"></script>
+	<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 </head>
 <body>
+	<div id="particles-js"></div>
+
 	<div class="container glass">
-		<h1><i data-lucide="sparkles"></i> Khang Bình</h1>
+		<h1><i data-lucide="sparkles"></i> <span class="typewriter" data-text="Khang Bình ✨"></span></h1>
 		<div class="theme-toggle">
 			<input type="checkbox" id="toggle-dark">
 			<label for="toggle-dark" class="toggle-label">
@@ -29,7 +32,7 @@
 			<a href="https://armconverter.com/decryptedappstore/us" target="_blank">
 				<i data-lucide="package"></i> Tải decrypted IPA
 			</a>
-			<a href="https://09102005-my.sharepoint.com/:f:/g/personal/phamkhangbinhpkb_09102005_onmicrosoft_com/EiQq7VA5RwNNqeG6VGS7K4UB5sBQdLwpZNCxQx0nTf-3kw?e=WgQKI7" target="_blank">
+			<a href="https://drive.google.com/drive/u/2/folders/1r2VB1qlh5wdhRCW6uSiMM2IPJUs1jCr0" target="_blank">
 				<i data-lucide="video"></i> Video
 			</a>
 			<a href="https://drive.google.com/drive/u/0/folders/1_kMy7UYzXhHyNYq8T7uBbVXjWoyvGs8l" target="_blank">
@@ -37,6 +40,13 @@
 			</a>
 		</div>
 	</div>
+
+	<div class="wave-container">
+		<svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+			<path d="M0,0 C300,100 900,0 1200,100 L1200,120 L0,120 Z" fill="#ffffff22"></path>
+		</svg>
+	</div>
+
 	<script>
 		lucide.createIcons();
 
@@ -51,6 +61,44 @@
 		toggle.addEventListener('change', () => {
 			document.body.classList.toggle('dark');
 			localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+		});
+
+		// Typewriter
+		const el = document.querySelector(".typewriter");
+		const text = el.getAttribute("data-text");
+		let i = 0;
+		function type() {
+			if (i < text.length) {
+				el.textContent += text.charAt(i);
+				i++;
+				setTimeout(type, 100);
+			}
+		}
+		type();
+
+		// ParticlesJS
+		tsParticles.load("particles-js", {
+			fullScreen: { enable: false },
+			background: { color: "transparent" },
+			particles: {
+				number: { value: 60 },
+				color: { value: "#ffffff" },
+				shape: { type: "circle" },
+				opacity: { value: 0.5 },
+				size: { value: { min: 1, max: 4 } },
+				move: { enable: true, speed: 1, direction: "none", outModes: { default: "bounce" } },
+				links: {
+					enable: true,
+					distance: 120,
+					color: "#ffffff",
+					opacity: 0.2,
+					width: 1
+				}
+			},
+			interactivity: {
+				events: { onHover: { enable: true, mode: "repulse" }, resize: true },
+				modes: { repulse: { distance: 100, duration: 0.4 } }
+			}
 		});
 	</script>
 </body>
