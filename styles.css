@@ -1,186 +1,245 @@
+/* ======================================== */
+/* Variables & Global Styles              */
+/* ======================================== */
 :root {
-	--bg-dark: linear-gradient(135deg, #1e1e2f, #11111f);
-	--text-light: #ffffff;
-	--text-dark: #1e1e1e;
+    --bg-dark: linear-gradient(135deg, #1e1e2f, #11111f);
+    --text-light: #ffffff;
+    --text-dark: #1e1e1e;
+    --link-hover-bg-light: rgba(255, 255, 255, 0.25);
+    --link-hover-bg-dark: rgba(255, 255, 255, 0.15);
+    --wave-fill-light: #ffffff22;
+    --wave-fill-dark: #ffffff11;
 }
 
 html {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-	font-family: 'Inter', sans-serif;
-	background: linear-gradient(270deg, #89f7fe, #66a6ff, #fbc2eb, #a6c1ee);
-	background-size: 800% 800%;
-	animation: gradientFlow 15s ease infinite;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	margin: 0;
-	transition: background 0.5s ease;
-	overflow-x: hidden;
-	position: relative;
-}
-
-#particles-js {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	z-index: 0;
-	pointer-events: none;
-}
-
-@keyframes gradientFlow {
-	0% { background-position: 0% 50%; }
-	50% { background-position: 100% 50%; }
-	100% { background-position: 0% 50%; }
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(270deg, #89f7fe, #66a6ff, #fbc2eb, #a6c1ee);
+    background-size: 800% 800%;
+    animation: gradientFlow 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    transition: background 0.5s ease, color 0.5s ease;
+    overflow-x: hidden;
+    position: relative;
+    color: var(--text-dark);
 }
 
 body.dark {
-	background: var(--bg-dark);
+    background: var(--bg-dark);
+    color: var(--text-light);
 }
 
+/* ======================================== */
+/* Particles Background                   */
+/* ======================================== */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ======================================== */
+/* Main Container (Glassmorphism)         */
+/* ======================================== */
 .container.glass {
-	position: relative;
-	z-index: 1;
-	background: rgba(255, 255, 255, 0.15);
-	backdrop-filter: blur(25px);
-	-webkit-backdrop-filter: blur(25px);
-	border: 1px solid rgba(255, 255, 255, 0.3);
-	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-	border-radius: 25px;
-	padding: 50px 30px;
-	max-width: 600px;
-	width: 90%;
-	text-align: center;
-	animation: fadeIn 1.2s ease-out;
-	color: var(--text-dark);
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+    padding: 40px 30px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
 }
 
 body.dark .glass {
-	background: rgba(255, 255, 255, 0.05);
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	color: var(--text-light);
+    background: rgba(30, 30, 47, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
+/* ======================================== */
+/* Typography & Content Sections          */
+/* ======================================== */
 h1 {
-	font-size: 2.8em;
-	margin-bottom: 25px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 10px;
+    font-size: 2.6em;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
 }
 
 .info {
-	font-size: 1.1em;
-	margin-bottom: 30px;
+    font-size: 1.05em;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.info p {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .info i {
-	margin-right: 8px;
-	vertical-align: middle;
+    flex-shrink: 0;
 }
 
+/* ======================================== */
+/* Links Section                          */
+/* ======================================== */
 .links {
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
 }
 
 .links a {
-	text-decoration: none;
-	font-size: 1.1em;
-	color: #fff;
-	background: rgba(255, 255, 255, 0.1);
-	padding: 15px 25px;
-	border-radius: 30px;
-	transition: all 0.3s ease;
-	backdrop-filter: blur(10px);
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 10px;
-	box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-	border: 1px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    font-size: 1.1em;
+    color: var(--text-dark);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 14px 25px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 500;
 }
 
-.links a:hover {
-	transform: translateY(-3px);
-	background: rgba(255, 255, 255, 0.25);
-	box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+.links a:hover,
+.links a:focus {
+    transform: translateY(-3px) scale(1.02);
+    background: var(--link-hover-bg-light);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    outline: none;
 }
 
 body.dark .links a {
-	background: rgba(255, 255, 255, 0.08);
-	border-color: rgba(255, 255, 255, 0.1);
-	color: #f0f0f0;
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
 }
 
-body.dark .links a:hover {
-	background: rgba(255, 255, 255, 0.15);
+body.dark .links a:hover,
+body.dark .links a:focus {
+    background: var(--link-hover-bg-dark);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* ======================================== */
+/* Animations                             */
+/* ======================================== */
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 @keyframes fadeIn {
-	from {
-		opacity: 0;
-		transform: translateY(20px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+/* ======================================== */
+/* Theme Toggle                           */
+/* ======================================== */
 .theme-toggle {
-	position: absolute;
-	top: 20px;
-	right: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
 }
 
 .toggle-label {
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	transition: color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 50%;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+.toggle-label:hover {
+     background-color: rgba(0, 0, 0, 0.1);
+}
+body.dark .toggle-label:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 #toggle-dark {
-	display: none;
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
 }
 
 .toggle-label i {
-	transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
-body.dark .toggle-label i[data-lucide="sun"] {
-	display: inline;
-}
+body:not(.dark) .toggle-label i[data-lucide="sun"] { display: none; }
+body:not(.dark) .toggle-label i[data-lucide="moon"] { display: inline; }
 
-body.dark .toggle-label i[data-lucide="moon"] {
-	display: none;
-}
+body.dark .toggle-label i[data-lucide="sun"] { display: inline; }
+body.dark .toggle-label i[data-lucide="moon"] { display: none; }
 
-body:not(.dark) .toggle-label i[data-lucide="sun"] {
-	display: none;
-}
-
+/* ======================================== */
+/* Wave Decoration                        */
+/* ======================================== */
 .wave-container {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	z-index: 0;
-	overflow: hidden;
-	line-height: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+    overflow: hidden;
+    line-height: 0;
+    pointer-events: none;
 }
 
 .wave-container svg {
-	display: block;
-	width: 100%;
-	height: 150px;
+    display: block;
+    width: 100%;
+    height: 100px;
+    transition: fill 0.5s ease;
 }
+.wave-container path {
+    fill: var(--wave-fill-light);
+}
+body.dark .wave-container path {
+    fill: var(--wave-fill-dark);
+}
+
+/* Accessibility block for reduced motion has been removed */
