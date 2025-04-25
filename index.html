@@ -4,18 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Trang tổng hợp liên kết cá nhân của Khang Bình. Chia sẻ tài liệu, ứng dụng và nhiều hơn nữa.">
-    <title>Khang Bình</title>
+    <title>Khang Bình | Personal Links</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+    <!-- Add AOS library for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body>
     <div id="particles-js"></div>
 
     <main class="container glass">
-        <h1><i data-lucide="sparkles"></i> <span class="typewriter" data-text="Khang Bình ✨"></span></h1>
+        <!-- Profile Section -->
+        <header class="profile">
+            <div class="avatar-container" data-aos="zoom-in">
+                <div class="avatar">
+                    <span>KB</span>
+                </div>
+            </div>
+            <h1><i data-lucide="sparkles"></i> <span class="typewriter" data-text="Khang Bình ✨"></span></h1>
+            <p class="tagline" data-aos="fade-up" data-aos-delay="300">Developer • Designer • Creator</p>
+        </header>
 
+        <!-- Theme Toggle -->
         <div class="theme-toggle">
             <input type="checkbox" id="toggle-dark" aria-label="Chuyển đổi giao diện Sáng/Tối">
             <label for="toggle-dark" class="toggle-label">
@@ -24,25 +37,111 @@
             </label>
         </div>
 
-        <div class="info">
+        <!-- Info Section -->
+        <div class="info" data-aos="fade-up">
             <p><strong><i data-lucide="user-round"></i> Tạo bởi:</strong> Phạm Khang Bình</p>
-            <p><i data-lucide="calendar-check"></i> Cập nhật lần cuối: 21/04/2025</p>
+            <p><i data-lucide="calendar-check"></i> Cập nhật lần cuối: 25/04/2025</p>
         </div>
 
-        <nav class="links" aria-label="Liên kết nhanh">
+        <!-- Social Media Section -->
+        <div class="social-links" data-aos="fade-up">
+            <a href="#" class="social-icon" aria-label="GitHub" title="GitHub">
+                <i data-lucide="github"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="LinkedIn" title="LinkedIn">
+                <i data-lucide="linkedin"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter" title="Twitter">
+                <i data-lucide="twitter"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Mail" title="Email">
+                <i data-lucide="mail"></i>
+            </a>
+        </div>
+
+        <!-- Skills Section -->
+        <section class="skills-section" data-aos="fade-up">
+            <h2 class="section-title"><i data-lucide="code-2"></i> Skills</h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>HTML/CSS</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>JavaScript</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Design</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Links Section -->
+        <nav class="links" aria-label="Liên kết nhanh" data-aos="fade-up">
+            <h2 class="section-title"><i data-lucide="link"></i> Quick Links</h2>
+            
             <a href="https://09102005-my.sharepoint.com/:f:/g/personal/phamkhangbinhpkb_09102005_onmicrosoft_com/En_Z6G3dTXVEmQzhTpTEQ6gB6-q_j4qYaU--aDNJ66uyQw?e=1e0AA4" target="_blank" title="Truy cập thư mục OneDrive chứa các phiên bản uYouPlus">
                 <i data-lucide="folder"></i> Onedrive uYouPlus
+                <span class="link-arrow"><i data-lucide="arrow-right"></i></span>
             </a>
             <a href="https://armconverter.com/decryptedappstore/us" target="_blank" title="Tải các file IPA đã được giải mã từ App Store (US)">
                 <i data-lucide="package"></i> Tải decrypted IPA
+                <span class="link-arrow"><i data-lucide="arrow-right"></i></span>
             </a>
             <a href="https://drive.google.com/drive/u/2/folders/1r2VB1qlh5wdhRCW6uSiMM2IPJUs1jCr0" target="_blank" title="Xem các video được lưu trữ trên Google Drive">
                 <i data-lucide="video"></i> Video
+                <span class="link-arrow"><i data-lucide="arrow-right"></i></span>
             </a>
             <a href="https://drive.google.com/drive/u/0/folders/1_kMy7UYzXhHyNYq8T7uBbVXjWoyvGs8l" target="_blank" title="Xem các tài liệu được lưu trữ trên Google Drive">
                 <i data-lucide="file-text"></i> Docs
+                <span class="link-arrow"><i data-lucide="arrow-right"></i></span>
             </a>
         </nav>
+
+        <!-- Projects Section -->
+        <section class="projects" data-aos="fade-up">
+            <h2 class="section-title"><i data-lucide="layout-grid"></i> Projects</h2>
+            <div class="project-grid">
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-image">
+                        <i data-lucide="code"></i>
+                    </div>
+                    <h3>Project 1</h3>
+                    <p>Short description of your project</p>
+                    <a href="#" class="card-link">View <i data-lucide="external-link" size="14"></i></a>
+                </div>
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card-image">
+                        <i data-lucide="smartphone"></i>
+                    </div>
+                    <h3>Project 2</h3>
+                    <p>Brief explanation of this project</p>
+                    <a href="#" class="card-link">View <i data-lucide="external-link" size="14"></i></a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer" data-aos="fade-up">
+            <p>© 2025 Phạm Khang Bình - Made with <i data-lucide="heart" size="14" color="#ff0066"></i></p>
+        </footer>
     </main>
 
     <div class="wave-container" aria-hidden="true">
@@ -50,6 +149,11 @@
             <path d="M0,0 C300,100 900,0 1200,100 L1200,120 L0,120 Z" fill="#ffffff22"></path>
         </svg>
     </div>
+    
+    <!-- Back to top button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <i data-lucide="chevron-up"></i>
+    </button>
 
     <script src="script.js" defer></script>
 </body>
