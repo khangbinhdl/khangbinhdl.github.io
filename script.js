@@ -197,8 +197,96 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Add micro-interactions to links ---
+    // --- Link Preview on Scroll ---
     const links = document.querySelectorAll('.links a');
+    const linkPreviews = document.querySelectorAll('.link-preview');
+    let currentVisiblePreview = null;
+    let scrollTimeout = null;
+    let lastScrollTop = 0;
+    let scrollDirection = 'down';
+    
+    // Show preview for link when scrolled to
+    const checkLinkInView = () => {
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+        }
+        
+        // Determine scroll direction
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+        lastScrollTop = scrollTop;
+        
+        // Only process if we've stopped scrolling briefly
+        scrollTimeout = setTimeout(() => {
+            links.forEach(link => {
+                const rect = link.getBoundingClientRect();
+                const isVisible = (
+                    rect.top >= 0 &&
+                    rect.top <= window.innerHeight / 2 && 
+                    rect.bottom <= window.innerHeight
+                );
+                
+                if (isVisible) {
+                    // If this is a different link than the one already showing a preview
+                    if (currentVisiblePreview && currentVisiblePreview.parentElement !== link) {
+                        // Hide the previous preview
+                        currentVisiblePreview.style.opacity = '0';
+                        currentVisiblePreview.style.visibility = 'hidden';
+                        currentVisiblePreview = null;
+                    }
+                    
+                    // Show this link's preview
+                    const preview = link.querySelector('.link-preview');
+                    if (preview && preview !== currentVisiblePreview) {
+                        preview.style.opacity = '1';
+                        preview.style.visibility = 'visible';
+                        preview.style.transform = 'translateX(-50%) translateY(0)';
+                        currentVisiblePreview = preview;
+                        
+                        // Auto-hide preview after 3 seconds
+                        setTimeout(() => {
+                            if (currentVisiblePreview === preview) {
+                                preview.style.opacity = '0';
+                                preview.style.visibility = 'hidden';
+                                currentVisiblePreview = null;
+                            }
+                        }, 3000);
+                    }
+                }
+            });
+        }, 150);
+    };
+    
+    // Set up scroll event listener if we have links with previews
+    if (links.length > 0) {
+        window.addEventListener('scroll', checkLinkInView);
+        
+        // Add mouse enter/leave events to keep previews visible during hover
+        links.forEach(link => {
+            const preview = link.querySelector('.link-preview');
+            
+            link.addEventListener('mouseenter', () => {
+                if (preview) {
+                    // This will now just enhance the CSS hover effect
+                    if (currentVisiblePreview && currentVisiblePreview !== preview) {
+                        currentVisiblePreview.style.opacity = '0';
+                        currentVisiblePreview.style.visibility = 'hidden';
+                    }
+                    currentVisiblePreview = preview;
+                }
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                // Let CSS handle the hiding on mouse leave
+                // When mouse leaves, the preview will be hidden via CSS
+            });
+        });
+        
+        // Check once on page load after a brief delay
+        setTimeout(checkLinkInView, 1000);
+    }
+
+    // --- Add micro-interactions to links ---
     links.forEach(link => {
         link.addEventListener('mouseenter', () => {
             // Add a subtle animation effect

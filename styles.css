@@ -25,6 +25,9 @@
     --box-shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.2);
     --transition-speed: 0.3s;
     --section-spacing: 40px;
+    --tooltip-bg-light: rgba(255, 255, 255, 0.95);
+    --tooltip-bg-dark: rgba(40, 40, 60, 0.95);
+    --tooltip-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 html {
@@ -440,6 +443,71 @@ body.dark .links a:focus {
 }
 
 /* ======================================== */
+/* Link Tooltip Previews                  */
+/* ======================================== */
+.link-preview {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--tooltip-bg-light);
+    color: var(--text-dark);
+    padding: 15px;
+    border-radius: var(--border-radius-sm);
+    width: 280px;
+    box-shadow: var(--tooltip-shadow);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: left;
+    pointer-events: none;
+    margin-bottom: 10px;
+}
+
+body.dark .link-preview {
+    background: var(--tooltip-bg-dark);
+    color: var(--text-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.links a:hover .link-preview,
+.links a:focus .link-preview {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.preview-title {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+body.dark .preview-title {
+    color: var(--secondary-color);
+}
+
+.preview-description {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+    .link-preview {
+        width: 230px;
+        padding: 12px;
+    }
+}
+
+/* ======================================== */
 /* Project Cards                          */
 /* ======================================== */
 .projects {
@@ -745,6 +813,11 @@ body.dark .wave-container path {
         right: 20px;
         width: 40px;
         height: 40px;
+    }
+    
+    .link-preview {
+        width: 230px;
+        padding: 12px;
     }
 }
 
