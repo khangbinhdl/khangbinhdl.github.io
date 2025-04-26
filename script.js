@@ -93,6 +93,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         setTimeout(type, 300); // Start after a brief delay
     }
+    
+    // --- Tab System for AI Learning Section ---
+    const setupTabs = () => {
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        if (tabBtns.length === 0) return;
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.getAttribute('data-tab');
+                
+                // Update button states
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Update content visibility
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === tabName) {
+                        content.classList.add('active');
+                    }
+                });
+                
+                // Refresh AOS animations
+                if (typeof AOS !== 'undefined') {
+                    setTimeout(() => { AOS.refresh(); }, 100);
+                }
+            });
+        });
+    };
+    
+    setupTabs();
 
     // --- ParticlesJS Initialization with theme-aware colors ---
     const particlesElement = document.getElementById('particles-js');
@@ -117,14 +150,14 @@ document.addEventListener('DOMContentLoaded', () => {
             background: { color: { value: "transparent" } },
             fpsLimit: 60,
             particles: {
-                number: { value: 50, density: { enable: true, value_area: 800 } },
+                number: { value: 40, density: { enable: true, value_area: 800 } },
                 color: { value: particlesColor },
                 shape: { 
-                    type: "circle",
+                    type: ["circle", "triangle", "polygon"],
                     stroke: { width: 0, color: "#000000" }
                 },
                 opacity: {
-                    value: 0.4,
+                    value: 0.5,
                     random: true,
                     anim: { enable: true, speed: 0.5, opacity_min: 0.1, sync: false }
                 },
@@ -139,14 +172,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     direction: "none",
                     random: true,
                     straight: false,
-                    outModes: { default: "out" },
-                    attract: { enable: false }
+                    outModes: { default: "bounce" },
+                    attract: { enable: true, rotateX: 600, rotateY: 1200 }
                 },
                 links: {
                     enable: true,
-                    distance: 140,
+                    distance: 150,
                     color: particlesColor,
-                    opacity: 0.2,
+                    opacity: 0.3,
                     width: 1,
                     triangles: { enable: false, opacity: 0.1 }
                 }
@@ -154,13 +187,19 @@ document.addEventListener('DOMContentLoaded', () => {
             interactivity: {
                 detectsOn: "canvas",
                 events: {
-                    onHover: { enable: true, mode: "grab" },
+                    onHover: { enable: true, mode: "bubble" },
                     onClick: { enable: true, mode: "push" },
                     resize: true
                 },
                 modes: {
                     grab: { distance: 140, links: { opacity: 0.5 } },
-                    push: { quantity: 4 },
+                    bubble: { 
+                        distance: 150, 
+                        size: 6, 
+                        duration: 1, 
+                        opacity: 0.8 
+                    },
+                    push: { quantity: 3 },
                     repulse: { distance: 100, duration: 0.4 }
                 }
             },
