@@ -1,1293 +1,238 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Trang tổng hợp liên kết cá nhân của Khang Bình. Chia sẻ tài liệu, ứng dụng và nhiều hơn nữa.">
-    <meta name="keywords" content="Khang Bình, liên kết cá nhân, tài liệu, ứng dụng, portfolio">
-    <meta name="author" content="Phạm Khang Bình">
-    <meta name="theme-color" content="#6c5ce7">
-    <meta property="og:title" content="Khang Bình | Personal Links">
-    <meta property="og:description" content="Trang tổng hợp liên kết cá nhân của Khang Bình. Chia sẻ tài liệu, ứng dụng và nhiều hơn nữa.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://khangbinhdl.github.io">
-    <meta property="og:image" content="https://khangbinhdl.github.io/og-image.jpg">
-    <title>Khang Bình | Personal Links</title>
+    <title>Phạm Khang Bình | Portfolio</title>
     
-    <!-- Preconnects for faster loading -->
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Modern Font options -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Core libraries -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
-    
-    <!-- Animation libraries -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- GSAP for advanced animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/ScrollTrigger.min.js"></script>
-    
-    <!-- Swiper for modern sliders -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    
-    <!-- VanillaTilt for 3D hover effects -->
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.0/dist/vanilla-tilt.min.js"></script>    <!-- Core styles -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="components.css">
-    <link rel="stylesheet" href="ai-learning.css">
+    <!-- Custom CSS for advanced effects -->
+    <style>
+        /* Use Inter font as default */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .gradient-ball {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px); /* Increased blur for a softer effect */
+            animation: move 20s infinite alternate;
+        }
+
+        .ball-1 {
+            width: 350px;
+            height: 350px;
+            background: rgba(121, 9, 148, 0.4); /* Purple */
+            top: 5%;
+            left: 10%;
+        }
+
+        .ball-2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(9, 67, 148, 0.4); /* Blue */
+            bottom: 5%;
+            right: 15%;
+            animation-duration: 25s;
+        }
+        
+        .ball-3 {
+            width: 250px;
+            height: 250px;
+            background: rgba(9, 148, 107, 0.3); /* Teal */
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-duration: 18s;
+        }
+
+        @keyframes move {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(80px, 120px) scale(1.2); }
+            100% { transform: translate(-80px, -40px) scale(1); }
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15); /* Slightly more opaque for better readability */
+            backdrop-filter: blur(24px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .dark .glass-card {
+            background: rgba(20, 20, 20, 0.3); /* Dark mode glass */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.25);
+        }
+        
+        .dark .glass-card:hover {
+             box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+        }
+
+        /* Custom scrollbar for a polished look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+    </style>
 </head>
-<body>
-    <!-- Background Effects -->
-    <div id="particles-js"></div>
-    <div class="blur-circle blur-circle-1"></div>
-    <div class="blur-circle blur-circle-2"></div>
-    <div class="blur-circle blur-circle-3"></div>
-    
-    <!-- Loading Animation -->
-    <div class="page-loader">
-        <div class="loader-content">
-            <div class="loader-spinner"></div>
-            <p>Loading...</p>
-        </div>
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-500">
+
+    <!-- Animated Gradient Background -->
+    <div class="gradient-bg">
+        <div class="gradient-ball ball-1"></div>
+        <div class="gradient-ball ball-2"></div>
+        <div class="gradient-ball ball-3"></div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <button class="nav-toggle" aria-label="Toggle Navigation Menu">
-                <i data-lucide="menu"></i>
+    <!-- Main Content -->
+    <main class="min-h-screen w-full flex items-center justify-center p-4 sm:p-6 lg:p-8">
+        <div class="glass-card w-full max-w-lg rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+            
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="absolute top-6 right-6 p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-white/20 dark:hover:bg-black/20 transition-colors">
+                <svg id="theme-icon-light" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <svg id="theme-icon-dark" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
             </button>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link active"><i data-lucide="home"></i> Home</a></li>
-                <li><a href="#about" class="nav-link"><i data-lucide="user"></i> About</a></li>
-                <li><a href="#skills" class="nav-link"><i data-lucide="code-2"></i> Skills</a></li>
-                <li><a href="#links" class="nav-link"><i data-lucide="link"></i> Links</a></li>
-                <li><a href="#projects" class="nav-link"><i data-lucide="layout-grid"></i> Projects</a></li>
-                <li><a href="#ai-learning" class="nav-link"><i data-lucide="brain"></i> AI Learning</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <main class="container glass" id="home">
-        <!-- Profile Section with Enhanced Design -->
-        <header class="profile">
-            <div class="avatar-container" data-aos="zoom-in">
-                <div class="avatar tilt-element">
-                    <span>KB</span>
-                    <div class="avatar-glow"></div>
-                </div>
+            <!-- Profile Section -->
+            <div class="flex flex-col items-center text-center">
+                <img class="h-32 w-32 rounded-full object-cover ring-4 ring-white/30" 
+                     src="https://placehold.co/200x200/a3e635/1e293b?text=PKB" 
+                     alt="Ảnh đại diện Phạm Khang Bình">
+                
+                <h1 class="text-3xl font-bold mt-5 text-gray-900 dark:text-white">Phạm Khang Bình</h1>
+                <p class="text-lg mt-1 text-gray-700 dark:text-gray-300">Student</p>
             </div>
-            <h1 class="animated-gradient-text"><i data-lucide="sparkles"></i> <span class="typewriter" data-text="Khang Bình"></span></h1>
-            <p class="tagline" data-aos="fade-up" data-aos-delay="300">
-                <span class="rotating-text">
-                    <span class="rotating-text-item active">Student</span>
-                    <span class="rotating-text-item">Developer</span>
-                    <span class="rotating-text-item">AI Enthusiast</span>
-                </span>
-            </p>
-            
-            <!-- New action buttons -->
-            <div class="profile-actions">
-                <a href="#contact" class="btn btn-primary">
-                    <i data-lucide="message-circle"></i> Contact Me
-                </a>
-                <a href="#projects" class="btn btn-outline">
-                    <i data-lucide="folder"></i> My Projects
-                </a>
-            </div>
-        </header>
 
-        <!-- Theme Toggle with Animation -->
-        <div class="theme-toggle">
-            <input type="checkbox" id="toggle-dark" aria-label="Chuyển đổi giao diện Sáng/Tối">
-            <label for="toggle-dark" class="toggle-label">
-                <i data-lucide="moon"></i>
-                <i data-lucide="sun"></i>
-                <div class="toggle-ball"></div>
-            </label>
-        </div>
+            <!-- About Me Section -->
+            <div class="mt-8 text-gray-800 dark:text-gray-200">
+                <h2 class="text-xl font-bold border-b-2 border-white/20 dark:border-white/10 pb-2">Giới thiệu</h2>
+                <ul class="mt-4 space-y-3">
+                    <li class="flex items-center">
+                        <svg class="h-5 w-5 mr-3 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span>Sinh năm: <strong>2005</strong></span>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="h-5 w-5 mr-3 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-5.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-5.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
+                        <span>Học tại: <strong>Đại học Khoa học Tự nhiên - ĐHQG TPHCM</strong></span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Projects Section -->
+            <div class="mt-8">
+                <h2 class="text-xl font-bold border-b-2 border-white/20 dark:border-white/10 pb-2 text-gray-800 dark:text-gray-200">Mini Projects</h2>
+                <div class="mt-4 space-y-4">
+                    <!-- BẠN CÓ THỂ SAO CHÉP KHỐI NÀY ĐỂ THÊM DỰ ÁN MỚI -->
+                    <div class="bg-white/20 dark:bg-black/20 p-4 rounded-xl hover:bg-white/30 dark:hover:bg-black/30 transition-colors">
+                        <h3 class="font-semibold text-gray-900 dark:text-white">Tên Dự Án 1</h3>
+                        <p class="text-sm mt-1 text-gray-700 dark:text-gray-300">Mô tả ngắn về dự án, công nghệ sử dụng, và vai trò của bạn.</p>
+                        <a href="#" class="text-sm font-semibold mt-2 inline-block text-sky-600 dark:text-sky-400 hover:underline">Xem trên GitHub &rarr;</a>
+                    </div>
+                    <!-- KẾT THÚC KHỐI DỰ ÁN MẪU -->
+                    
+                    <div class="bg-white/20 dark:bg-black/20 p-4 rounded-xl hover:bg-white/30 dark:hover:bg-black/30 transition-colors">
+                        <h3 class="font-semibold text-gray-900 dark:text-white">Tên Dự Án 2</h3>
+                        <p class="text-sm mt-1 text-gray-700 dark:text-gray-300">Một dự án thú vị khác về phân tích dữ liệu hoặc phát triển web.</p>
+                        <a href="#" class="text-sm font-semibold mt-2 inline-block text-sky-600 dark:text-sky-400 hover:underline">Xem trên GitHub &rarr;</a>
+                    </div>
+                </div>
+            </div>
 
-        <!-- Info Section with Badges -->
-        <div id="about" class="info" data-aos="fade-up">
-            <div class="info-badge"><i data-lucide="user-round"></i> Phạm Khang Bình</div>
-            <div class="info-badge"><i data-lucide="calendar-check"></i> Updated: 30/05/2025</div>
-            <div class="info-badge"><i data-lucide="map-pin"></i> Vietnam</div>
-        </div>
-
-        <!-- Enhanced Social Media Section -->
-        <div class="social-links" data-aos="fade-up">
-            <a href="#" class="social-icon tilt-element" aria-label="GitHub" title="GitHub">
-                <i data-lucide="github"></i>
-                <span class="social-tooltip">GitHub</span>
-            </a>
-            <a href="#" class="social-icon tilt-element" aria-label="LinkedIn" title="LinkedIn">
-                <i data-lucide="linkedin"></i>
-                <span class="social-tooltip">LinkedIn</span>
-            </a>
-            <a href="#" class="social-icon tilt-element" aria-label="Twitter" title="Twitter">
-                <i data-lucide="twitter"></i>
-                <span class="social-tooltip">Twitter</span>
-            </a>
-            <a href="#" class="social-icon tilt-element" aria-label="Mail" title="Email">
-                <i data-lucide="mail"></i>
-                <span class="social-tooltip">Email</span>
-            </a>
-            <a href="#" class="social-icon tilt-element" aria-label="Instagram" title="Instagram">
-                <i data-lucide="instagram"></i>
-                <span class="social-tooltip">Instagram</span>
-            </a>
-        </div>        <!-- Modern Skills Section -->
-        <section id="skills" class="skills-section" data-aos="fade-up">
-            <h2 class="section-title"><i data-lucide="code-2"></i> Skills</h2>
-            
-            <div class="skills-tabs">
-                <button class="skills-tab-btn active" data-tab="dev">Development</button>
-                <button class="skills-tab-btn" data-tab="ai">AI / ML</button>
-                <button class="skills-tab-btn" data-tab="other">Other</button>
-            </div>
-            
-            <div class="skills-content active" id="dev">
-                <div class="skills-grid">
-                    <div class="skill-card tilt-element" data-aos="flip-left" data-aos-delay="100">
-                        <div class="skill-icon">
-                            <i data-lucide="html"></i>
-                        </div>
-                        <h3>HTML/CSS</h3>
-                        <div class="skill-rating">
-                            <div class="stars">
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star-half"></i>
-                            </div>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-card tilt-element" data-aos="flip-left" data-aos-delay="200">
-                        <div class="skill-icon">
-                            <i data-lucide="file-code"></i>
-                        </div>
-                        <h3>JavaScript</h3>
-                        <div class="skill-rating">
-                            <div class="stars">
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star-half"></i>
-                            </div>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-card tilt-element" data-aos="flip-left" data-aos-delay="300">
-                        <div class="skill-icon">
-                            <i data-lucide="palette"></i>
-                        </div>
-                        <h3>UI/UX Design</h3>
-                        <div class="skill-rating">
-                            <div class="stars">
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star-half"></i>
-                                <i data-lucide="star-off"></i>
-                            </div>
-                            <span>75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-card tilt-element" data-aos="flip-left" data-aos-delay="400">
-                        <div class="skill-icon">
-                            <i data-lucide="database"></i>
-                        </div>
-                        <h3>Databases</h3>
-                        <div class="skill-rating">
-                            <div class="stars">
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star-half"></i>
-                                <i data-lucide="star-off"></i>
-                            </div>
-                            <span>70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 70%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="skills-content" id="ai">
-                <div class="skills-grid">
-                    <div class="skill-card tilt-element">
-                        <div class="skill-icon">
-                            <i data-lucide="brain"></i>
-                        </div>
-                        <h3>Machine Learning</h3>
-                        <div class="skill-rating">
-                            <div class="stars">
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star-off"></i>
-                            </div>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-card tilt-element">
-                        <div class="skill-icon">
-                            <i data-lucide="image"></i>
-                        </div>
-                        <h3>Computer Vision</h3>
-                        <div class="skill-rating">
-                            <div class="stars">
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star-half"></i>
-                                <i data-lucide="star-off"></i>
-                            </div>
-                            <span>75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-card tilt-element">
-                        <div class="skill-icon">
-                            <i data-lucide="message-square-text"></i>
-                        </div>
-                        <h3>NLP</h3>
-                        <div class="skill-rating">
-                            <div class="stars">
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star-off"></i>
-                                <i data-lucide="star-off"></i>
-                            </div>
-                            <span>65%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 65%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-card tilt-element">
-                        <div class="skill-icon">
-                            <i data-lucide="line-chart"></i>
-                        </div>
-                        <h3>Data Analysis</h3>
-                        <div class="skill-rating">
-                            <div class="stars">
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star"></i>
-                                <i data-lucide="star-half"></i>
-                            </div>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="skills-content" id="other">
-                <div class="skills-grid">
-                    <div class="skill-card tilt-element">
-                        <div class="skill-icon">
-                            <i data-lucide="languages"></i>
-                        </div>
-                        <h3>Languages</h3>
-                        <ul class="skill-list">
-                            <li>Vietnamese (Native)</li>
-                            <li>English (Fluent)</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-card tilt-element">
-                        <div class="skill-icon">
-                            <i data-lucide="book-open"></i>
-                        </div>
-                        <h3>Academic</h3>
-                        <ul class="skill-list">
-                            <li>Research Methodology</li>
-                            <li>Technical Writing</li>
-                            <li>Data Science</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>        <!-- Enhanced Links Section -->
-        <nav id="links" class="links" aria-label="Liên kết nhanh" data-aos="fade-up">
-            <h2 class="section-title"><i data-lucide="link"></i> Quick Links</h2>
-            
-            <div class="search-box">
-                <i data-lucide="search"></i>
-                <input type="text" id="link-search" placeholder="Search links..." aria-label="Search links">
-            </div>
-            
-            <div class="links-container">
-                <a href="https://09102005-my.sharepoint.com/:f:/g/personal/phamkhangbinhpkb_09102005_onmicrosoft_com/En_Z6G3dTXVEmQzhTpTEQ6gB6-q_j4qYaU--aDNJ66uyQw?e=1e0AA4" target="_blank" class="link-card tilt-element" title="Truy cập thư mục OneDrive chứa các phiên bản uYouPlus" data-category="tools">
-                    <div class="link-icon">
-                        <i data-lucide="folder"></i>
-                    </div>
-                    <div class="link-content">
-                        <h3>Onedrive uYouPlus</h3>
-                        <p>Enhanced YouTube for iOS with ad-blocking</p>
-                    </div>
-                    <span class="link-arrow"><i data-lucide="external-link"></i></span>
-                    
-                    <div class="link-preview">
-                        <div class="preview-header">
-                            <i data-lucide="youtube"></i>
-                            <h4>uYouPlus</h4>
-                        </div>
-                        <p class="preview-description">An enhanced version of YouTube for iOS with ad-blocking, background playback and many more features. Project by arichornlover on GitHub.</p>
-                        <div class="preview-meta">
-                            <span class="meta-item"><i data-lucide="clock"></i> Updated regularly</span>
-                            <span class="meta-item"><i data-lucide="download"></i> IPA files</span>
-                        </div>
-                        <div class="preview-action">Visit Now</div>
-                    </div>
-                </a>
-                
-                <a href="https://armconverter.com/decryptedappstore/us" target="_blank" class="link-card tilt-element" title="Tải các file IPA đã được giải mã từ App Store (US)" data-category="tools">
-                    <div class="link-icon">
-                        <i data-lucide="package"></i>
-                    </div>
-                    <div class="link-content">
-                        <h3>Decrypted IPA</h3>
-                        <p>Download decrypted iOS apps</p>
-                    </div>
-                    <span class="link-arrow"><i data-lucide="external-link"></i></span>
-                    
-                    <div class="link-preview">
-                        <div class="preview-header">
-                            <i data-lucide="download"></i>
-                            <h4>Decrypted IPA Downloads</h4>
-                        </div>
-                        <p class="preview-description">Download decrypted IPA files directly from the US App Store using armconverter.com service, compatible with sideloading on iOS devices.</p>
-                        <div class="preview-meta">
-                            <span class="meta-item"><i data-lucide="smartphone"></i> iOS apps</span>
-                            <span class="meta-item"><i data-lucide="shield"></i> Safe sideloading</span>
-                        </div>
-                        <div class="preview-action">Visit Now</div>
-                    </div>
-                </a>
-                
-                <a href="https://drive.google.com/drive/u/2/folders/1r2VB1qlh5wdhRCW6uSiMM2IPJUs1jCr0" target="_blank" class="link-card tilt-element" title="Xem các video được lưu trữ trên Google Drive" data-category="courses">
-                    <div class="link-icon">
-                        <i data-lucide="video"></i>
-                    </div>
-                    <div class="link-content">
-                        <h3>AI Course Videos</h3>
-                        <p>Lectures from Advanced AI Vietnam</p>
-                    </div>
-                    <span class="link-arrow"><i data-lucide="external-link"></i></span>
-                    
-                    <div class="link-preview">
-                        <div class="preview-header">
-                            <i data-lucide="graduation-cap"></i>
-                            <h4>AIO 2023 Course Videos</h4>
-                        </div>
-                        <p class="preview-description">Video lectures from the 2023 Advanced AI Vietnam course covering deep learning, machine learning algorithms and practical implementations.</p>
-                        <div class="preview-meta">
-                            <span class="meta-item"><i data-lucide="play-circle"></i> Video collection</span>
-                            <span class="meta-item"><i data-lucide="brain"></i> ML/AI focused</span>
-                        </div>
-                        <div class="preview-action">Watch Now</div>
-                    </div>
-                </a>
-                
-                <a href="https://drive.google.com/drive/u/0/folders/1_kMy7UYzXhHyNYq8T7uBbVXjWoyvGs8l" target="_blank" class="link-card tilt-element" title="Xem các tài liệu được lưu trữ trên Google Drive" data-category="courses">
-                    <div class="link-icon">
-                        <i data-lucide="file-text"></i>
-                    </div>
-                    <div class="link-content">
-                        <h3>AI Documentation</h3>
-                        <p>Study materials & exercises</p>
-                    </div>
-                    <span class="link-arrow"><i data-lucide="external-link"></i></span>
-                    
-                    <div class="link-preview">
-                        <div class="preview-header">
-                            <i data-lucide="book-open"></i>
-                            <h4>AIO 2023 Documentation</h4>
-                        </div>
-                        <p class="preview-description">Study materials, exercises, and reference documents from the Advanced AI Vietnam 2023 course curriculum.</p>
-                        <div class="preview-meta">
-                            <span class="meta-item"><i data-lucide="book"></i> Learning resources</span>
-                            <span class="meta-item"><i data-lucide="code"></i> Code examples</span>
-                        </div>
-                        <div class="preview-action">Access Now</div>
-                    </div>
-                </a>
-                
-                <a href="#" target="_blank" class="link-card tilt-element" title="New blog with tech articles and tutorials" data-category="blog">
-                    <div class="link-icon">
-                        <i data-lucide="pen-line"></i>
-                    </div>
-                    <div class="link-content">
-                        <h3>Tech Blog</h3>
-                        <p>Articles and tutorials on AI & development</p>
-                    </div>
-                    <span class="link-arrow"><i data-lucide="external-link"></i></span>
-                    
-                    <div class="link-preview">
-                        <div class="preview-header">
-                            <i data-lucide="pen-line"></i>
-                            <h4>Tech Blog & Tutorials</h4>
-                        </div>
-                        <p class="preview-description">Articles on AI, machine learning, web development, and mobile app development with tutorials and code examples.</p>
-                        <div class="preview-meta">
-                            <span class="meta-item"><i data-lucide="calendar"></i> Updated weekly</span>
-                            <span class="meta-item"><i data-lucide="hash"></i> Tech topics</span>
-                        </div>
-                        <div class="preview-action">Read Blog</div>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="links-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="tools">Tools</button>
-                <button class="filter-btn" data-filter="courses">Courses</button>
-                <button class="filter-btn" data-filter="blog">Blog</button>
-            </div>
-        </nav>
-
-        <!-- Modern Projects Section -->
-        <section id="projects" class="projects" data-aos="fade-up">
-            <h2 class="section-title"><i data-lucide="layout-grid"></i> Projects</h2>
-            
-            <!-- Swiper Slider for Projects -->
-            <div class="swiper project-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="project-card enhanced" data-aos="fade-up">
-                            <div class="project-image">
-                                <img src="https://via.placeholder.com/600x400/6c5ce7/FFFFFF/?text=AI+Project" alt="AI Project" loading="lazy">
-                                <div class="project-overlay">
-                                    <div class="project-tech">
-                                        <span>Python</span>
-                                        <span>TensorFlow</span>
-                                        <span>Computer Vision</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-content">
-                                <h3>Traffic Sign Recognition</h3>
-                                <p>A deep learning model for accurately recognizing and classifying traffic signs using convolutional neural networks.</p>
-                                <div class="project-links">
-                                    <a href="#" class="btn btn-small">
-                                        <i data-lucide="github"></i> Repository
-                                    </a>
-                                    <a href="#" class="btn btn-small btn-outline">
-                                        <i data-lucide="external-link"></i> Live Demo
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="swiper-slide">
-                        <div class="project-card enhanced" data-aos="fade-up" data-aos-delay="100">
-                            <div class="project-image">
-                                <img src="https://via.placeholder.com/600x400/00cec9/FFFFFF/?text=Web+App" alt="Web Application" loading="lazy">
-                                <div class="project-overlay">
-                                    <div class="project-tech">
-                                        <span>JavaScript</span>
-                                        <span>React</span>
-                                        <span>Node.js</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-content">
-                                <h3>AI Learning Platform</h3>
-                                <p>Interactive web application for learning AI concepts with visualizations and interactive code examples.</p>
-                                <div class="project-links">
-                                    <a href="#" class="btn btn-small">
-                                        <i data-lucide="github"></i> Repository
-                                    </a>
-                                    <a href="#" class="btn btn-small btn-outline">
-                                        <i data-lucide="external-link"></i> Live Demo
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="swiper-slide">
-                        <div class="project-card enhanced" data-aos="fade-up" data-aos-delay="200">
-                            <div class="project-image">
-                                <img src="https://via.placeholder.com/600x400/fd79a8/FFFFFF/?text=Mobile+App" alt="Mobile Application" loading="lazy">
-                                <div class="project-overlay">
-                                    <div class="project-tech">
-                                        <span>Swift</span>
-                                        <span>iOS</span>
-                                        <span>UIKit</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-content">
-                                <h3>Study Timer</h3>
-                                <p>Mobile application to help students manage study time with Pomodoro technique and analytics dashboard.</p>
-                                <div class="project-links">
-                                    <a href="#" class="btn btn-small">
-                                        <i data-lucide="github"></i> Repository
-                                    </a>
-                                    <a href="#" class="btn btn-small btn-outline">
-                                        <i data-lucide="external-link"></i> App Store
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Swiper navigation -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-            
-            <!-- View All Projects Button -->
-            <div class="text-center" data-aos="fade-up">
-                <a href="#" class="btn btn-primary">
-                    <i data-lucide="folder-open"></i> View All Projects
-                </a>
-            </div>
-        </section>        <!-- Enhanced AI Learning Resources Section -->
-        <section id="ai-learning" class="ai-learning" data-aos="fade-up">
-            <h2 class="section-title animated-gradient-text"><i data-lucide="brain"></i> AI Learning Resources</h2>
-            
-            <!-- Learning Path Visual -->
-            <div class="learning-path">
-                <div class="learning-path-line"></div>
-                <div class="learning-path-node active" data-step="1">
-                    <div class="node-content">
-                        <div class="node-icon"><i data-lucide="rocket"></i></div>
-                        <span>Start</span>
-                    </div>
-                </div>
-                <div class="learning-path-node" data-step="2">
-                    <div class="node-content">
-                        <div class="node-icon"><i data-lucide="bar-chart"></i></div>
-                        <span>Basics</span>
-                    </div>
-                </div>
-                <div class="learning-path-node" data-step="3">
-                    <div class="node-content">
-                        <div class="node-icon"><i data-lucide="network"></i></div>
-                        <span>Advanced</span>
-                    </div>
-                </div>
-                <div class="learning-path-node" data-step="4">
-                    <div class="node-content">
-                        <div class="node-icon"><i data-lucide="trophy"></i></div>
-                        <span>Expert</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Modern Tabs Interface -->
-            <div class="learning-tabs">
-                <button class="tab-btn active" data-tab="notebooks">
-                    <i data-lucide="file-code"></i>
-                    <span>Notebooks</span>
-                </button>
-                <button class="tab-btn" data-tab="exercises">
-                    <i data-lucide="pencil-ruler"></i>
-                    <span>Exercises</span>
-                </button>
-                <button class="tab-btn" data-tab="modules">
-                    <i data-lucide="layers"></i>
-                    <span>Modules</span>
-                </button>
-                <button class="tab-btn" data-tab="roadmap">
-                    <i data-lucide="map"></i>
-                    <span>Roadmap</span>
-                </button>
-            </div>
-            
-            <!-- Notebooks Tab -->
-            <div class="tab-content active" id="notebooks">
-                <div class="search-box">
-                    <i data-lucide="search"></i>
-                    <input type="text" id="notebook-search" placeholder="Search notebooks..." aria-label="Search notebooks">
-                </div>
-                
-                <div class="notebooks-grid">
-                    <!-- ML Algorithms Category -->
-                    <div class="notebook-category">
-                        <h3 class="category-title">
-                            <i data-lucide="binary"></i>
-                            ML Algorithms
-                            <span class="notebook-count">8</span>
-                        </h3>
-                        
-                        <div class="notebooks-container">
-                            <a href="https://github.com/khangbinhdl/Learning-AI/tree/main/AIO/KNN_&_Decision_Tree.ipynb" class="notebook-card tilt-element" target="_blank">
-                                <div class="notebook-icon">
-                                    <i data-lucide="git-branch"></i>
-                                </div>
-                                <div class="notebook-info">
-                                    <h4>KNN & Decision Tree</h4>
-                                    <div class="notebook-meta">
-                                        <span><i data-lucide="code"></i> Python</span>
-                                        <span><i data-lucide="star"></i> Beginner</span>
-                                    </div>
-                                </div>
-                            </a>
-                            
-                            <a href="https://github.com/khangbinhdl/Learning-AI/tree/main/AIO/Random Forest.ipynb" class="notebook-card tilt-element" target="_blank">
-                                <div class="notebook-icon">
-                                    <i data-lucide="trees"></i>
-                                </div>
-                                <div class="notebook-info">
-                                    <h4>Random Forest</h4>
-                                    <div class="notebook-meta">
-                                        <span><i data-lucide="code"></i> Python</span>
-                                        <span><i data-lucide="star"></i> Intermediate</span>
-                                    </div>
-                                </div>
-                            </a>
-                            
-                            <a href="https://github.com/khangbinhdl/Learning-AI/tree/main/AIO/SVM.ipynb" class="notebook-card tilt-element" target="_blank">
-                                <div class="notebook-icon">
-                                    <i data-lucide="plane"></i>
-                                </div>
-                                <div class="notebook-info">
-                                    <h4>SVM</h4>
-                                    <div class="notebook-meta">
-                                        <span><i data-lucide="code"></i> Python</span>
-                                        <span><i data-lucide="star"></i> Intermediate</span>
-                                    </div>
-                                </div>
-                            </a>
-                            
-                            <a href="https://github.com/khangbinhdl/Learning-AI/tree/main/AIO/XGBoost_testing.ipynb" class="notebook-card tilt-element" target="_blank">
-                                <div class="notebook-icon">
-                                    <i data-lucide="zap"></i>
-                                </div>
-                                <div class="notebook-info">
-                                    <h4>XGBoost</h4>
-                                    <div class="notebook-meta">
-                                        <span><i data-lucide="code"></i> Python</span>
-                                        <span><i data-lucide="star"></i> Advanced</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Computer Vision Category -->
-                    <div class="notebook-category">
-                        <h3 class="category-title">
-                            <i data-lucide="eye"></i>
-                            Computer Vision
-                            <span class="notebook-count">5</span>
-                        </h3>
-                        
-                        <div class="notebooks-container">
-                            <a href="https://github.com/khangbinhdl/Learning-AI/tree/main/AIO/Lane_Detection.ipynb" class="notebook-card tilt-element" target="_blank">
-                                <div class="notebook-icon">
-                                    <i data-lucide="road"></i>
-                                </div>
-                                <div class="notebook-info">
-                                    <h4>Lane Detection</h4>
-                                    <div class="notebook-meta">
-                                        <span><i data-lucide="code"></i> Python</span>
-                                        <span><i data-lucide="star"></i> Intermediate</span>
-                                    </div>
-                                </div>
-                            </a>
-                            
-                            <a href="https://github.com/khangbinhdl/Learning-AI/tree/main/AIO/Traffic_Sign_Detection_(SVM).ipynb" class="notebook-card tilt-element" target="_blank">
-                                <div class="notebook-icon">
-                                    <i data-lucide="traffic-cone"></i>
-                                </div>
-                                <div class="notebook-info">
-                                    <h4>Traffic Sign Detection</h4>
-                                    <div class="notebook-meta">
-                                        <span><i data-lucide="code"></i> Python</span>
-                                        <span><i data-lucide="star"></i> Advanced</span>
-                                    </div>
-                                </div>
-                            </a>
-                            
-                            <a href="https://github.com/khangbinhdl/Learning-AI/tree/main/AIO/YOLOv11.ipynb" class="notebook-card tilt-element featured" target="_blank">
-                                <div class="notebook-icon">
-                                    <i data-lucide="scan"></i>
-                                </div>
-                                <div class="notebook-info">
-                                    <h4>YOLOv11</h4>
-                                    <div class="notebook-meta">
-                                        <span><i data-lucide="code"></i> Python</span>
-                                        <span><i data-lucide="star"></i> Advanced</span>
-                                    </div>
-                                    <span class="featured-badge">Featured</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- NLP Category -->
-                    <div class="notebook-category">
-                        <h3 class="category-title">
-                            <i data-lucide="message-square-text"></i>
-                            Natural Language Processing
-                            <span class="notebook-count">4</span>
-                        </h3>
-                        
-                        <div class="notebooks-container">
-                            <a href="https://github.com/khangbinhdl/Learning-AI/tree/main/AIO/n-grams NLP.ipynb" class="notebook-card tilt-element" target="_blank">
-                                <div class="notebook-icon">
-                                    <i data-lucide="text"></i>
-                                </div>
-                                <div class="notebook-info">
-                                    <h4>n-grams NLP</h4>
-                                    <div class="notebook-meta">
-                                        <span><i data-lucide="code"></i> Python</span>
-                                        <span><i data-lucide="star"></i> Intermediate</span>
-                                    </div>
-                                </div>
-                            </a>
-                            
-                            <a href="https://github.com/khangbinhdl/Learning-AI/tree/main/AIO/Twitter_Sentiment_Analysis_(Softmax_Regression).ipynb" class="notebook-card tilt-element" target="_blank">
-                                <div class="notebook-icon">
-                                    <i data-lucide="twitter"></i>
-                                </div>
-                                <div class="notebook-info">
-                                    <h4>Twitter Sentiment Analysis</h4>
-                                    <div class="notebook-meta">
-                                        <span><i data-lucide="code"></i> Python</span>
-                                        <span><i data-lucide="star"></i> Advanced</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- View All Button -->
-                <div class="view-all">
-                    <a href="https://github.com/khangbinhdl/Learning-AI/tree/main/AIO" class="btn btn-primary" target="_blank">
-                        <i data-lucide="github"></i> View All on GitHub
+            <!-- Social Links -->
+            <div class="mt-8 text-center">
+                <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">Kết nối với tôi</p>
+                <div class="flex justify-center space-x-5">
+                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" title="GitHub">
+                        <svg class="h-7 w-7" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" title="LinkedIn">
+                       <svg class="h-7 w-7" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+                    </a>
+                     <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" title="Email">
+                        <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z"/></svg>
                     </a>
                 </div>
             </div>
-            
-            <!-- Exercises Tab -->
-            <div class="tab-content" id="exercises">
-                <div class="search-box">
-                    <i data-lucide="search"></i>
-                    <input type="text" id="exercise-search" placeholder="Search exercises..." aria-label="Search exercises">
-                </div>
-                
-                <div class="exercises-grid">
-                    <div class="exercise-card tilt-element" data-aos="fade-up">
-                        <div class="exercise-header">
-                            <div class="exercise-icon">
-                                <i data-lucide="folder-kanban"></i>
-                            </div>
-                            <div class="exercise-difficulty beginner">Beginner</div>
-                        </div>
-                        <div class="exercise-content">
-                            <h3>ML Foundations</h3>
-                            <p>KNN, Decision Tree, Random Forest exercises with solutions</p>
-                            <ul class="exercise-topics">
-                                <li><i data-lucide="check-circle"></i> Classification basics</li>
-                                <li><i data-lucide="check-circle"></i> Tree-based models</li>
-                                <li><i data-lucide="check-circle"></i> Ensemble methods</li>
-                            </ul>
-                        </div>
-                        <div class="exercise-footer">
-                            <a href="#" class="btn btn-small">Start Learning</a>
-                        </div>
-                    </div>
-                    
-                    <div class="exercise-card tilt-element" data-aos="fade-up" data-aos-delay="100">
-                        <div class="exercise-header">
-                            <div class="exercise-icon">
-                                <i data-lucide="graduation-cap"></i>
-                            </div>
-                            <div class="exercise-difficulty intermediate">Intermediate</div>
-                        </div>
-                        <div class="exercise-content">
-                            <h3>Advanced ML</h3>
-                            <p>SVM, XGBoost, Logistic & Softmax Regression exercises</p>
-                            <ul class="exercise-topics">
-                                <li><i data-lucide="check-circle"></i> Support vector machines</li>
-                                <li><i data-lucide="check-circle"></i> Gradient boosting</li>
-                                <li><i data-lucide="check-circle"></i> Multi-class classification</li>
-                            </ul>
-                        </div>
-                        <div class="exercise-footer">
-                            <a href="#" class="btn btn-small">Start Learning</a>
-                        </div>
-                    </div>
-                    
-                    <div class="exercise-card tilt-element" data-aos="fade-up" data-aos-delay="200">
-                        <div class="exercise-header">
-                            <div class="exercise-icon">
-                                <i data-lucide="layers"></i>
-                            </div>
-                            <div class="exercise-difficulty advanced">Advanced</div>
-                        </div>
-                        <div class="exercise-content">
-                            <h3>Neural Networks</h3>
-                            <p>MLP and other deep learning exercises with solutions</p>
-                            <ul class="exercise-topics">
-                                <li><i data-lucide="check-circle"></i> Neural network architectures</li>
-                                <li><i data-lucide="check-circle"></i> Backpropagation</li>
-                                <li><i data-lucide="check-circle"></i> Deep learning frameworks</li>
-                            </ul>
-                        </div>
-                        <div class="exercise-footer">
-                            <a href="#" class="btn btn-small">Start Learning</a>
-                        </div>
-                    </div>
-                    
-                    <div class="exercise-card tilt-element" data-aos="fade-up" data-aos-delay="300">
-                        <div class="exercise-header">
-                            <div class="exercise-icon">
-                                <i data-lucide="image"></i>
-                            </div>
-                            <div class="exercise-difficulty advanced">Advanced</div>
-                        </div>
-                        <div class="exercise-content">
-                            <h3>Computer Vision Projects</h3>
-                            <p>Object detection, image classification, and segmentation</p>
-                            <ul class="exercise-topics">
-                                <li><i data-lucide="check-circle"></i> CNN architectures</li>
-                                <li><i data-lucide="check-circle"></i> Transfer learning</li>
-                                <li><i data-lucide="check-circle"></i> Real-time detection</li>
-                            </ul>
-                        </div>
-                        <div class="exercise-footer">
-                            <a href="#" class="btn btn-small">Start Learning</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Modules Tab -->
-            <div class="tab-content" id="modules">
-                <div class="module-timeline">
-                    <div class="timeline-item" data-aos="fade-right">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">Module 01</div>
-                        <div class="timeline-content">
-                            <div class="module-card tilt-element">
-                                <div class="module-header">
-                                    <h3>Introduction to ML</h3>
-                                    <span class="module-duration"><i data-lucide="clock"></i> 3 weeks</span>
-                                </div>
-                                <div class="module-body">
-                                    <p>Basic concepts, terminology and approaches in machine learning</p>
-                                    <div class="module-topics">
-                                        <span class="module-topic">Data preparation</span>
-                                        <span class="module-topic">Supervised learning</span>
-                                        <span class="module-topic">Model evaluation</span>
-                                    </div>
-                                </div>
-                                <div class="module-footer">
-                                    <a href="#" class="btn btn-outline btn-small">Explore Module</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">Module 02</div>
-                        <div class="timeline-content">
-                            <div class="module-card tilt-element">
-                                <div class="module-header">
-                                    <h3>Supervised Learning</h3>
-                                    <span class="module-duration"><i data-lucide="clock"></i> 4 weeks</span>
-                                </div>
-                                <div class="module-body">
-                                    <p>Classification and regression techniques with practical examples</p>
-                                    <div class="module-topics">
-                                        <span class="module-topic">Decision trees</span>
-                                        <span class="module-topic">Random forests</span>
-                                        <span class="module-topic">SVM</span>
-                                        <span class="module-topic">XGBoost</span>
-                                    </div>
-                                </div>
-                                <div class="module-footer">
-                                    <a href="#" class="btn btn-outline btn-small">Explore Module</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">Module 03</div>
-                        <div class="timeline-content">
-                            <div class="module-card tilt-element">
-                                <div class="module-header">
-                                    <h3>Computer Vision</h3>
-                                    <span class="module-duration"><i data-lucide="clock"></i> 5 weeks</span>
-                                </div>
-                                <div class="module-body">
-                                    <p>Image processing, feature extraction and object detection</p>
-                                    <div class="module-topics">
-                                        <span class="module-topic">CNNs</span>
-                                        <span class="module-topic">Object detection</span>
-                                        <span class="module-topic">YOLO</span>
-                                        <span class="module-topic">GANs</span>
-                                    </div>
-                                </div>
-                                <div class="module-footer">
-                                    <a href="#" class="btn btn-outline btn-small">Explore Module</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">Module 04</div>
-                        <div class="timeline-content">
-                            <div class="module-card tilt-element">
-                                <div class="module-header">
-                                    <h3>Natural Language Processing</h3>
-                                    <span class="module-duration"><i data-lucide="clock"></i> 4 weeks</span>
-                                </div>
-                                <div class="module-body">
-                                    <p>Text processing, sentiment analysis and language models</p>
-                                    <div class="module-topics">
-                                        <span class="module-topic">Text preprocessing</span>
-                                        <span class="module-topic">Embeddings</span>
-                                        <span class="module-topic">RNNs & LSTMs</span>
-                                        <span class="module-topic">Transformers</span>
-                                    </div>
-                                </div>
-                                <div class="module-footer">
-                                    <a href="#" class="btn btn-outline btn-small">Explore Module</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Roadmap Tab (New) -->
-            <div class="tab-content" id="roadmap">
-                <div class="ai-roadmap">
-                    <div class="roadmap-header">
-                        <h3>AI Learning Roadmap</h3>
-                        <p>Follow this personalized learning path to master AI and ML concepts step by step</p>
-                    </div>
-                    
-                    <div class="roadmap-container">
-                        <div class="roadmap-milestone completed" data-aos="zoom-in">
-                            <div class="milestone-header">
-                                <div class="milestone-icon"><i data-lucide="check"></i></div>
-                                <h4>Fundamentals</h4>
-                            </div>
-                            <div class="milestone-content">
-                                <ul>
-                                    <li class="completed">Python Programming <i data-lucide="check-circle"></i></li>
-                                    <li class="completed">Linear Algebra <i data-lucide="check-circle"></i></li>
-                                    <li class="completed">Statistics <i data-lucide="check-circle"></i></li>
-                                    <li class="completed">Calculus <i data-lucide="check-circle"></i></li>
-                                </ul>
-                                <a href="#" class="btn btn-small btn-outline">Review</a>
-                            </div>
-                        </div>
-                        
-                        <div class="roadmap-milestone active" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="milestone-header">
-                                <div class="milestone-icon"><i data-lucide="activity"></i></div>
-                                <h4>ML Basics</h4>
-                            </div>
-                            <div class="milestone-content">
-                                <ul>
-                                    <li class="completed">Data Preprocessing <i data-lucide="check-circle"></i></li>
-                                    <li class="completed">Regression <i data-lucide="check-circle"></i></li>
-                                    <li class="completed">Classification <i data-lucide="check-circle"></i></li>
-                                    <li class="in-progress">Ensemble Methods <i data-lucide="circle"></i></li>
-                                </ul>
-                                <a href="#" class="btn btn-small btn-primary">Continue</a>
-                            </div>
-                        </div>
-                        
-                        <div class="roadmap-milestone" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="milestone-header">
-                                <div class="milestone-icon"><i data-lucide="network"></i></div>
-                                <h4>Deep Learning</h4>
-                            </div>
-                            <div class="milestone-content">
-                                <ul>
-                                    <li>Neural Networks <i data-lucide="circle"></i></li>
-                                    <li>CNNs <i data-lucide="circle"></i></li>
-                                    <li>RNNs & LSTMs <i data-lucide="circle"></i></li>
-                                    <li>Transformers <i data-lucide="circle"></i></li>
-                                </ul>
-                                <a href="#" class="btn btn-small btn-outline disabled">Locked</a>
-                            </div>
-                        </div>
-                        
-                        <div class="roadmap-milestone" data-aos="zoom-in" data-aos-delay="300">
-                            <div class="milestone-header">
-                                <div class="milestone-icon"><i data-lucide="rocket"></i></div>
-                                <h4>Specializations</h4>
-                            </div>
-                            <div class="milestone-content">
-                                <ul>
-                                    <li>Computer Vision <i data-lucide="circle"></i></li>
-                                    <li>NLP <i data-lucide="circle"></i></li>
-                                    <li>Reinforcement Learning <i data-lucide="circle"></i></li>
-                                    <li>AI Ethics <i data-lucide="circle"></i></li>
-                                </ul>
-                                <a href="#" class="btn btn-small btn-outline disabled">Locked</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-          <!-- Contact Section (New) -->
-        <section id="contact" class="contact-section" data-aos="fade-up">
-            <h2 class="section-title"><i data-lucide="mail-plus"></i> Get In Touch</h2>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-card tilt-element">
-                        <div class="contact-icon">
-                            <i data-lucide="mail"></i>
-                        </div>
-                        <h3>Email</h3>
-                        <p>contact@khangbinh.com</p>
-                    </div>
-                    
-                    <div class="contact-card tilt-element">
-                        <div class="contact-icon">
-                            <i data-lucide="map-pin"></i>
-                        </div>
-                        <h3>Location</h3>
-                        <p>Ho Chi Minh City, Vietnam</p>
-                    </div>
-                    
-                    <div class="contact-card tilt-element">
-                        <div class="contact-icon">
-                            <i data-lucide="linkedin"></i>
-                        </div>
-                        <h3>LinkedIn</h3>
-                        <p>Connect professionally</p>
-                        <a href="#" class="card-link">View Profile</a>
-                    </div>
-                    
-                    <div class="contact-card tilt-element">
-                        <div class="contact-icon">
-                            <i data-lucide="github"></i>
-                        </div>
-                        <h3>GitHub</h3>
-                        <p>Check my repositories</p>
-                        <a href="#" class="card-link">View Profile</a>
-                    </div>
-                </div>
-                
-                <div class="contact-form glass-card">
-                    <h3>Send Me a Message</h3>
-                    <form id="contact-form" action="#" method="post">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Enter your name">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="Enter your email">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required placeholder="Message subject">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Type your message here..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <span class="submit-text"><i data-lucide="send"></i> Send Message</span>
-                            <span class="loading-text"><i data-lucide="loader-2"></i> Sending...</span>
-                        </button>
-                    </form>
-                    <div id="form-success" class="form-message success">
-                        <i data-lucide="check-circle"></i>
-                        <p>Thanks for your message! I'll get back to you soon.</p>
-                    </div>
-                    <div id="form-error" class="form-message error">
-                        <i data-lucide="alert-circle"></i>
-                        <p>Something went wrong. Please try again later.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    
-        <!-- Newsletter Section -->
-        <section class="newsletter-section" data-aos="fade-up">
-            <div class="newsletter-container glass-card">
-                <div class="newsletter-icon">
-                    <i data-lucide="mail-plus"></i>
-                </div>
-                <div class="newsletter-content">
-                    <h3>Stay Updated</h3>
-                    <p>Subscribe to my newsletter for the latest updates on projects, tutorials and resources</p>
-                    <form id="newsletter-form" class="newsletter-form">
-                        <input type="email" placeholder="Your email address" required>
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Enhanced Footer -->
-        <footer class="footer" data-aos="fade-up">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Khang Bình</h3>
-                    <p class="footer-tagline">Student, Developer & AI Enthusiast</p>
-                    <div class="footer-social">
-                        <a href="#" class="social-icon-small" aria-label="GitHub"><i data-lucide="github"></i></a>
-                        <a href="#" class="social-icon-small" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-                        <a href="#" class="social-icon-small" aria-label="Twitter"><i data-lucide="twitter"></i></a>
-                        <a href="#" class="social-icon-small" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-                        <a href="#" class="social-icon-small" aria-label="Mail"><i data-lucide="mail"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#ai-learning">AI Learning</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Tutorials</a></li>
-                        <li><a href="#">Downloads</a></li>
-                        <li><a href="#">Tools</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>© 2025 Phạm Khang Bình - Made with <i data-lucide="heart" size="14" class="heart-icon"></i> and <strong>GitHub Copilot</strong></p>
-                <div class="footer-theme-toggle">
-                    <button id="footer-dark-toggle" aria-label="Toggle Dark Theme">
-                        <i data-lucide="moon"></i> Dark Mode
-                    </button>
-                </div>
-            </div>
-        </footer>
+        </div>
     </main>
 
-    <!-- Enhanced Wave Container -->
-    <div class="wave-container" aria-hidden="true">
-        <svg class="wave wave1" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0 C300,100 900,0 1200,100 L1200,120 L0,120 Z" fill="#ffffff22"></path>
-        </svg>
-        <svg class="wave wave2" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,30 C300,10 900,40 1200,5 L1200,120 L0,120 Z" fill="#ffffff11"></path>
-        </svg>
-        <svg class="wave wave3" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,60 C500,0 700,120 1200,50 L1200,120 L0,120 Z" fill="#ffffff08"></path>
-        </svg>
-    </div>
-    
-    <!-- Back to top button with enhanced style -->
-    <button id="back-to-top" aria-label="Back to top">
-        <i data-lucide="chevron-up"></i>
-        <span class="tooltip">Back to top</span>
-    </button>
-    
-    <!-- Status toast notifications -->
-    <div class="toast-container">
-        <div class="toast success-toast" id="success-toast">
-            <div class="toast-icon">
-                <i data-lucide="check-circle"></i>
-            </div>
-            <div class="toast-content">
-                <h4>Success!</h4>
-                <p id="success-message">Operation completed successfully.</p>
-            </div>
-            <button class="toast-close" aria-label="Close notification">
-                <i data-lucide="x"></i>
-            </button>
-        </div>
-        
-        <div class="toast error-toast" id="error-toast">
-            <div class="toast-icon">
-                <i data-lucide="alert-triangle"></i>
-            </div>
-            <div class="toast-content">
-                <h4>Error!</h4>
-                <p id="error-message">Something went wrong.</p>
-            </div>
-            <button class="toast-close" aria-label="Close notification">
-                <i data-lucide="x"></i>
-            </button>
-        </div>
-    </div>
-    
-    <!-- Feature detection banner (optional) -->
-    <div class="feature-banner" id="feature-banner">
-        <i data-lucide="info"></i>
-        <p>This site works best in a modern browser with JavaScript enabled.</p>
-        <button class="feature-banner-close" aria-label="Dismiss message">
-            <i data-lucide="x"></i>
-        </button>
-    </div>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const lightIcon = document.getElementById('theme-icon-light');
+        const darkIcon = document.getElementById('theme-icon-dark');
+        const htmlEl = document.documentElement;
 
-    <!-- Scripts with optimized loading -->
-    <script src="script.js" defer></script>
+        // Function to set theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                htmlEl.classList.add('dark');
+                lightIcon.classList.add('hidden');
+                darkIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlEl.classList.remove('dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Event listener for the button
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlEl.classList.contains('dark') ? 'dark' : 'light';
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        // Check for saved theme in localStorage or user's OS preference on initial load
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else if (prefersDark) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    </script>
 </body>
 </html>
