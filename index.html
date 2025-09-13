@@ -7,8 +7,15 @@
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Portfolio của Phạm Khang Bình - Sinh viên Đại học Khoa học Tự nhiên ĐHQG TPHCM">
-    <meta name="keywords" content="Phạm Khang Bình, Portfolio, Student">
+        <meta name="keywords" content="Phạm Khang Bình, Portfolio, Data Science, Machine Learning, AI, Student, Computer Vision, NLP">
     <meta name="author" content="Phạm Khang Bình">
+        <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+        <link rel="canonical" href="https://khangbinhdl.github.io/" />
+        <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)">
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+        <meta name="color-scheme" content="light dark">
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <!-- Open Graph Tags -->
     <meta property="og:title" content="Phạm Khang Bình | Portfolio">
@@ -16,10 +23,58 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://khangbinhdl.github.io">
     <meta property="og:image" content="https://khangbinhdl.github.io/avatar.jpg">
+        <meta property="og:site_name" content="Phạm Khang Bình Portfolio" />
+        <meta property="og:locale" content="vi_VN" />
+        <meta property="og:image:alt" content="Ảnh đại diện Phạm Khang Bình" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="800" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Phạm Khang Bình | Portfolio" />
+        <meta name="twitter:description" content="Portfolio của Phạm Khang Bình - Data Science & AI" />
+        <meta name="twitter:image" content="https://khangbinhdl.github.io/avatar.jpg" />
+        <meta name="twitter:image:alt" content="Ảnh đại diện Phạm Khang Bình" />
+
+        <!-- PWA / Mobile -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="PKB Portfolio">
+        <link rel="manifest" href="/manifest.webmanifest">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+        <!-- Structured Data JSON-LD -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Phạm Khang Bình",
+            "alternateName": "Pham Khang Binh",
+            "url": "https://khangbinhdl.github.io/",
+            "image": "https://khangbinhdl.github.io/avatar.jpg",
+            "jobTitle": "Data Science Student",
+            "affiliation": {
+                "@type": "CollegeOrUniversity",
+                "name": "Đại học Khoa học Tự nhiên ĐHQG TPHCM"
+            },
+            "description": "Portfolio cá nhân về Data Science, Machine Learning, Deep Learning, Computer Vision và NLP.",
+            "knowsAbout": [
+                "Machine Learning",
+                "Deep Learning",
+                "Computer Vision",
+                "Natural Language Processing",
+                "Python",
+                "Data Science"
+            ],
+            "sameAs": [
+                "https://github.com/khangbinhdl"
+            ]
+        }
+        </script>
     
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -66,13 +121,37 @@
     <style>
         /* CSS Variables for theme consistency */
         :root {
-            --primary-purple: rgba(121, 9, 148, 0.4);
-            --primary-blue: rgba(9, 67, 148, 0.4);
-            --primary-teal: rgba(9, 148, 107, 0.3);
-            --glass-light: rgba(255, 255, 255, 0.15);
-            --glass-dark: rgba(20, 20, 20, 0.3);
-            --border-light: rgba(255, 255, 255, 0.2);
-            --border-dark: rgba(255, 255, 255, 0.1);
+            /* Light Theme (Kawaii Pastel) */
+            --grad-1: #f8b4d9; /* pastel pink */
+            --grad-2: #c3e5f7; /* baby blue */
+            --grad-3: #d8c8f8; /* soft lavender */
+            --grad-4: #c5f7e3; /* mint */
+            --accent: #ffb347; /* soft peach */
+            --accent-strong: #ff8fab; /* stronger pink */
+            --primary-purple: rgba(216, 200, 248, 0.55);
+            --primary-blue: rgba(195, 229, 247, 0.55);
+            --primary-teal: rgba(197, 247, 227, 0.45);
+            --glass-light: rgba(255, 255, 255, 0.25);
+            --glass-dark: rgba(20, 20, 20, 0.3); /* fallback for dark override */
+            --border-light: rgba(255, 255, 255, 0.35);
+            --border-dark: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Dark Theme (Shibui Muted) */
+        .dark {
+            --grad-1: #4b3f44; /* deep muted plum */
+            --grad-2: #2f4f4f; /* dark desaturated teal */
+            --grad-3: #3e4a5b; /* slate indigo */
+            --grad-4: #5a4e36; /* earthy olive-brown */
+            --accent: #8c5e3c;  /* rust brown accent */
+            --accent-strong: #b87333; /* copper */
+            --primary-purple: rgba(75, 63, 68, 0.55);
+            --primary-blue: rgba(63, 86, 90, 0.55);
+            --primary-teal: rgba(62, 74, 91, 0.45);
+            --glass-light: rgba(35, 35, 38, 0.35); /* repurposed for dark card base */
+            --glass-dark: rgba(25, 25, 28, 0.5);
+            --border-light: rgba(140, 94, 60, 0.3);
+            --border-dark: rgba(255, 255, 255, 0.08);
         }
 
         /* Use Inter font as default with fallbacks */
@@ -90,9 +169,10 @@
             height: 100%;
             overflow: hidden;
             z-index: -1;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background: linear-gradient(-45deg, var(--grad-1), var(--grad-2), var(--grad-3), var(--grad-4));
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
+            transition: background 0.8s ease;
         }
 
         @keyframes gradient {
@@ -112,7 +192,7 @@
         .ball-1 {
             width: 350px;
             height: 350px;
-            background: var(--primary-purple);
+            background: var(--grad-1);
             top: 5%;
             left: 10%;
         }
@@ -120,7 +200,7 @@
         .ball-2 {
             width: 300px;
             height: 300px;
-            background: var(--primary-blue);
+            background: var(--grad-2);
             bottom: 5%;
             right: 15%;
             animation-duration: 25s;
@@ -129,11 +209,17 @@
         .ball-3 {
             width: 250px;
             height: 250px;
-            background: var(--primary-teal);
+            background: var(--grad-3);
             top: 40%;
             left: 50%;
             transform: translateX(-50%);
             animation-duration: 18s;
+        }
+
+        /* Accent gradient text tweak */
+        h1.bg-gradient-to-r {
+            --tw-gradient-from: var(--accent-strong);
+            --tw-gradient-to: var(--accent) 100%;
         }
 
         @keyframes move {
@@ -227,6 +313,28 @@
                 transition-duration: 0.01ms !important;
             }
         }
+        
+        /* Click (ripple / particle) effect */
+        .click-fx {
+            position: fixed;
+            pointer-events: none;
+            width: var(--s, 12px);
+            height: var(--s, 12px);
+            top: 0; left: 0;
+            margin: -6px 0 0 -6px;
+            background: radial-gradient(circle at center, var(--c1) 0%, var(--c2) 60%, transparent 70%);
+            border-radius: 50%;
+            mix-blend-mode: screen;
+            animation: click-burst 700ms ease-out forwards;
+            opacity: .9;
+            filter: blur(0.5px) saturate(130%);
+        }
+        @keyframes click-burst {
+            0% { transform: translate(var(--x), var(--y)) scale(.2); opacity:.9; }
+            60% { opacity:.5; }
+            100% { transform: translate(calc(var(--x) + var(--dx)), calc(var(--y) + var(--dy))) scale(1.8); opacity:0; }
+        }
+        .dark .click-fx { mix-blend-mode: lighten; }
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-500">
@@ -675,6 +783,49 @@
         window.addEventListener('unhandledrejection', (e) => {
             console.error('Unhandled promise rejection:', e.reason);
         });
+
+        // Click effect (particles) honoring reduced motion
+        (function(){
+            const colorsLight = [
+                ['#ff8fab','#ffd9e8'],
+                ['#c3e5f7','#ffffff'],
+                ['#d8c8f8','#f8b4d9'],
+                ['#c5f7e3','#ffffff']
+            ];
+            const colorsDark = [
+                ['#8c5e3c','#b87333'],
+                ['#4b3f44','#8c5e3c'],
+                ['#2f4f4f','#b87333'],
+                ['#3e4a5b','#8c5e3c']
+            ];
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if(prefersReduced) return; // respect user preference
+            const maxParticles = 14;
+            window.addEventListener('pointerdown', (e)=>{
+                // ignore right/middle clicks
+                if(e.button!==0) return;
+                const useDark = htmlEl.classList.contains('dark');
+                const palette = useDark ? colorsDark : colorsLight;
+                for(let i=0;i<maxParticles;i++){
+                    const el = document.createElement('div');
+                    el.className = 'click-fx';
+                    const angle = (Math.PI * 2 * i)/maxParticles + Math.random()*0.5;
+                    const dist = 40 + Math.random()*50;
+                    const dx = Math.cos(angle)*dist;
+                    const dy = Math.sin(angle)*dist;
+                    const pair = palette[Math.floor(Math.random()*palette.length)];
+                    el.style.setProperty('--x', e.clientX+'px');
+                    el.style.setProperty('--y', e.clientY+'px');
+                    el.style.setProperty('--dx', dx+'px');
+                    el.style.setProperty('--dy', dy+'px');
+                    el.style.setProperty('--c1', pair[0]);
+                    el.style.setProperty('--c2', pair[1]);
+                    el.style.setProperty('--s', (8+Math.random()*10)+'px');
+                    document.body.appendChild(el);
+                    el.addEventListener('animationend', ()=> el.remove());
+                }
+            });
+        })();
     </script>
 </body>
 </html>
